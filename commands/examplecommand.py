@@ -1,4 +1,4 @@
-from wpilib.command import command
+from wpilib.command import Command
 
 class ExampleCommand(Command):
     """Example command class"""

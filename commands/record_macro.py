@@ -21,7 +21,7 @@ class RecordMacro(Command):
 
     def execute(self):
         self.writer.writerow({
-            "Subsystem": self.robot.subsystem.output
+            "Subsystem": self.robot.subsystem.output,
 
             #this is needed to make sure everything runs at the right time
             "Time": wpilib.Timer.getFPGATimestamp() - self.initTime}) #get the time as the row is written

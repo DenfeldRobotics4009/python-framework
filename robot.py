@@ -5,17 +5,20 @@ import networktables
 from wpilib.command import Scheduler
 from oi import OI
 
-#from subsystems.filename import SubsystemClass
+from subsystems.subsystem import Subsystem
 
-#from commands.filename import CommandClass
+from commands.examplecommand import ExampleCommand
 
 from utilities.drive_control import dead_zone
+from commands.play_macro import PlayMacro
+from commands.record_macro import RecordMacro
+
 
 class RobotName(wpilib.SampleRobot):
     def robotInit(self):
         """Initialises robot & joysticks."""
-
-        #self.subsystem = Subsystem(self)
+        self.oi = OI(self)
+        self.subsystem = Subsystem(self)
 
         #self.AutonomousCommand = AutonomousCommand(self)
         self.PlayMacroCommand = PlayMacro(self, "macro.csv")
@@ -33,8 +36,6 @@ class RobotName(wpilib.SampleRobot):
     def operatorControl(self):
         """Teleop stuff goes in here"""
 
-        self.PlayMacroCommand.cancel()
-
         #self.drivetrain.drive.setSafetyEnabled(True) - enables safety things for manual control
         joystick = self.oi.getStick()
 
@@ -45,8 +46,6 @@ class RobotName(wpilib.SampleRobot):
 
     def disabled(self):
         """When the robot is disabled, this code runs"""
-
-        self.PlayMacroCommand.Cancel()
         while self.isDisabled():
             self.log()
             wpilib.Timer.delay(.005)

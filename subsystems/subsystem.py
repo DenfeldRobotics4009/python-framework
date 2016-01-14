@@ -1,8 +1,8 @@
 import wpilib
 from wpilib.command import Subsystem
-#from commands.manual.examplecommand import ExampleCommand
+from commands.examplecommand import ExampleCommand
 
-class Subsystem(Subsystem)
+class Subsystem(Subsystem):
     """Example subsystem code"""
 
     def __init__(self, robot):
@@ -11,7 +11,7 @@ class Subsystem(Subsystem)
         self.motor = wpilib.Talon(0) #Talons are 0-indexed
 
     def initDefaultCommand(self):
-        self.setDefaultCommand(ExampleCommand(self.robot))
+        self.setDefaultCommand(ExampleCommand())
 
     def log(self):
         """If there was logging, it would occur here"""

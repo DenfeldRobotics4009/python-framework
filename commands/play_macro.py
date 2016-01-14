@@ -10,7 +10,7 @@ class PlayMacro(Command):
         """Initialize the command and get all the requirements."""
         super().__init__()
         self.robot = robot
-        self.requires(robot.drivetrain)
+        self.requires(robot.subsystem)
         self.name = name
         self.done_yet = False
 
